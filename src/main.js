@@ -27,7 +27,6 @@ const toggleAudioBtn = document.getElementById('toggle-audio-global');
 const audioStatusText = document.getElementById('audio-status-text');
 
 function initApp() {
-    // Como ya no sabemos desde aquí si la API está, ponemos verde por defecto
     if (statusDot) statusDot.style.background = 'var(--neon-green)';
     if (modelSelect) modelSelect.value = selectedModel;
     modelStatus.textContent = selectedModel;
