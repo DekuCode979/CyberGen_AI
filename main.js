@@ -3,9 +3,10 @@ console.log('🚀 CyberGen AI V1.2 iniciando...');
 const MODELS_LIST = ["gemini-2.5-flash", "gemini-2.5-flash-lite", "gemini-2.5-pro", "gemini-1.5-flash", "gemini-1.5-pro"];
 const SYSTEM_PROMPT = 'Eres CyberGen AI, analista de datos. Usa ## títulos, **negritas**, `código` para números. Para gráficos: [CHART_DATA:{"type":"bar","data":{"labels":["A","B"],"datasets":[{"label":"Datos","data":[10,20]}]}}]';
 
+// Busca API Key en: 1) config.js (local) 2) Variable de entorno (Vercel) 3) localStorage
 let API_KEY = "";
 try { API_KEY = window.CYBERGEN_CONFIG.GEMINI_API_KEY.trim(); } catch(e) {}
-if (!API_KEY) API_KEY = localStorage.getItem("GEMINI_PRO_KEY") || "";
+if (!API_KEY && typeof VITE_GEMINI_API_KEY !== 'undefined') API_KEY = VITE_GEMINI_API_KEY;
 
 let globalHistory = [];
 try { globalHistory = JSON.parse(localStorage.getItem('cyberpunk_history_v15')) || []; } catch(e) { globalHistory = []; }
